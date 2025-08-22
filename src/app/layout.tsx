@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kollektif Zeka - Yapay Zeka Topluluğu",
-  description: "Yapay zeka tutkunları, araştırmacılar ve profesyonelleri bir araya getiren etkinlikler. Bilgi paylaşımı, networking ve yenilikçi projeler için hazır olun.",
+  title: "Kollektif Zeka",
+  description: "Birlikte Hayal Ediyoruz, Yapay Zekâ ile Geliştiriyoruz",
   keywords: ["yapay zeka", "AI", "machine learning", "topluluk", "etkinlik", "Türkiye"],
   authors: [{ name: "Kollektif Zeka" }],
   creator: "Kollektif Zeka",
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://kollektif-zeka.vercel.app'),
   openGraph: {
-    title: "Kollektif Zeka - Yapay Zeka Topluluğu",
-    description: "Yapay zeka tutkunları, araştırmacılar ve profesyonelleri bir araya getiren etkinlikler.",
+    title: "Kollektif Zeka",
+    description: "Birlikte Hayal Ediyoruz, Yapay Zekâ ile Geliştiriyoruz",
     url: 'https://kollektif-zeka.vercel.app',
     siteName: 'Kollektif Zeka',
     locale: 'tr_TR',
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Kollektif Zeka - Yapay Zeka Topluluğu",
-    description: "Yapay zeka tutkunları, araştırmacılar ve profesyonelleri bir araya getiren etkinlikler.",
+    title: "Kollektif Zeka",
+    description: "Birlikte Hayal Ediyoruz, Yapay Zekâ ile Geliştiriyoruz",
     images: ['/kollektif-zeka.jpeg'],
   },
   robots: {
