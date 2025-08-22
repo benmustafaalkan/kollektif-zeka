@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center p-4">
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
         {/* Logo */}
@@ -21,47 +21,44 @@ export default function Home() {
 
         {/* Coming Soon Text */}
         <div className="space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-200 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-200 tracking-tight">
             Birlikte Hayal Ediyoruz, Yapay Zekâ ile Geliştiriyoruz
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-light">
+          <p className="text-lg md:text-xl text-slate-400 font-light">
             Farklı disiplinlerden gelen üretken zihinler, kolektif aklın gücüyle yapay zekâyı dönüştürüyor.
           </p>
         </div>
 
         {/* Email Signup */}
-        <div className="space-y-4 bg-gradient-to-br from-slate-50/95 to-white/95 dark:from-slate-800/95 dark:to-slate-700/95 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-300/50 dark:border-slate-600/50 shadow-xl max-w-2xl mx-auto">
+        <div className="space-y-4 bg-gradient-to-br from-slate-800/95 to-slate-700/95 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-600/50 shadow-xl max-w-2xl mx-auto">
           <div className="text-center space-y-2">
-            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">
+            <h3 className="text-xl font-semibold text-slate-200">
               Kollektif Zeka online topluluğu yakında açılıyor!
             </h3>
-            <p className="text-base text-slate-600 dark:text-slate-400">
+            <p className="text-base text-slate-400">
               Topluluğun öncülerinden olmak istiyorsan e-postanı bırak.
             </p>
           </div>
           <form 
-            action="https://docs.google.com/forms/d/1K8UJTAHY4Wy72fVshf3EpA_ypVoO1HISSY49E8XYGAs/formResponse" 
-            method="POST" 
-            target="_blank"
             className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
             id="emailForm"
           >
             <input
               type="email"
-              name="entry.976432797"
               placeholder="E-posta adresiniz"
               required
-              className="flex-1 px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+              className="flex-1 px-4 py-3 border border-slate-600 rounded-lg bg-slate-700 text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+              id="emailInput"
             />
             <button 
               type="submit"
               id="submitButton"
-              className="px-6 py-3 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800 rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-slate-200 text-slate-800 rounded-lg font-medium hover:bg-slate-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Katıl
             </button>
           </form>
-          <p className="text-sm text-slate-500 dark:text-slate-500 italic text-center">
+          <p className="text-sm text-slate-500 italic text-center">
             Spam yapmayacağımıza söz veriyoruz. Sadece önemli duyurular için kullanacağız.
           </p>
           
@@ -71,15 +68,16 @@ export default function Home() {
                 let lastSubmitTime = 0;
                 const submitButton = document.getElementById('submitButton');
                 const form = document.getElementById('emailForm');
+                const emailInput = document.getElementById('emailInput');
                 const cooldownTime = 5000; // 5 saniye
                 
                 form.addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  
                   const now = Date.now();
                   const timeSinceLastSubmit = now - lastSubmitTime;
                   
                   if (timeSinceLastSubmit < cooldownTime) {
-                    e.preventDefault();
-                    
                     // Buton durumunu güncelle
                     submitButton.disabled = true;
                     submitButton.textContent = 'Lütfen bekleyin...';
@@ -104,7 +102,47 @@ export default function Home() {
                   
                   lastSubmitTime = now;
                   submitButton.disabled = true;
-                  submitButton.textContent = 'Gönderiliyor...';
+                  
+                  // Geri sayım başlat
+                  let countdown = 5;
+                  submitButton.textContent = 'Gönderiliyor... (' + countdown + ')';
+                  
+                  const countdownInterval = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                      submitButton.textContent = 'Gönderiliyor... (' + countdown + ')';
+                    } else {
+                      clearInterval(countdownInterval);
+                      submitButton.textContent = 'Gönderiliyor...';
+                    }
+                  }, 1000);
+                  
+                  // Arka planda Google Forms'a gönder
+                  const formData = new FormData();
+                  formData.append('entry.976432797', emailInput.value);
+                  
+                  fetch('https://docs.google.com/forms/d/1K8UJTAHY4Wy72fVshf3EpA_ypVoO1HISSY49E8XYGAs/formResponse', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                  }).then(() => {
+                    // Başarılı
+                    clearInterval(countdownInterval);
+                    submitButton.textContent = 'Teşekkürler!';
+                    emailInput.value = '';
+                    emailInput.disabled = true;
+                    
+                    setTimeout(() => {
+                      submitButton.disabled = false;
+                      submitButton.textContent = 'Katıl';
+                      emailInput.disabled = false;
+                    }, 3000);
+                  }).catch(() => {
+                    // Hata durumunda
+                    clearInterval(countdownInterval);
+                    submitButton.textContent = 'Tekrar Dene';
+                    submitButton.disabled = false;
+                  });
                 });
               })();
             `
@@ -112,13 +150,13 @@ export default function Home() {
         </div>
 
         {/* Event Info with Image */}
-        <div className="relative space-y-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-          <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-200">
+        <div className="relative space-y-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
+          <h2 className="text-xl font-semibold text-slate-200">
             Kollektif Zeka | Ankara - Vibe Coding
           </h2>
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="flex-1">
-              <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-base text-slate-400 leading-relaxed">
                 2 Ağustos 2025&apos;te Ankara Tekmer&apos;de ilk Kollektif Zeka buluşmamızı gerçekleştirdik.
                 Farklı disiplinlerden gelen katılımcılarla, yapay zekâ odağında kolektif üretimi deneyimledik.
               </p>
@@ -127,7 +165,7 @@ export default function Home() {
                   href="https://kommunity.com/kollektifzeka/events/kollektif-zeka-ankara-5e6b004d"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors duration-300 text-sm font-medium"
+                  className="inline-flex items-center px-4 py-2 text-slate-400 hover:text-slate-200 transition-colors duration-300 text-sm font-medium"
                 >
                   Etkinlik Detayları →
                 </a>
@@ -135,8 +173,8 @@ export default function Home() {
             </div>
             
             {/* Sponsor Section */}
-            <div className="flex flex-col items-center space-y-3 bg-white/70 dark:bg-slate-700/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-600/50">
-              <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <div className="flex flex-col items-center space-y-3 bg-slate-700/70 backdrop-blur-sm rounded-xl p-4 border border-slate-600/50">
+              <p className="text-sm font-medium text-slate-300">
                 Etkinlik Sponsoru
               </p>
               <a
@@ -219,7 +257,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           {/* Social Links */}
           <div className="flex items-center space-x-4">
-            <h3 className="text-lg font-medium text-slate-600 dark:text-slate-400">
+            <h3 className="text-lg font-medium text-slate-400">
               Bize Ulaşın:
             </h3>
             <div className="flex space-x-3">
