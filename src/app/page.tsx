@@ -119,7 +119,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="flex-1">
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                2 Ağustos 2025'te Ankara Tekmer'de ilk Kollektif Zeka buluşmamızı gerçekleştirdik.
+                2 Ağustos 2025&apos;te Ankara Tekmer&apos;de ilk Kollektif Zeka buluşmamızı gerçekleştirdik.
                 Farklı disiplinlerden gelen katılımcılarla, yapay zekâ odağında kolektif üretimi deneyimledik.
               </p>
               <div className="flex flex-col items-center mt-4">
