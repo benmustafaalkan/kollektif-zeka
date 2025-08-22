@@ -36,7 +36,7 @@ export default function Home() {
               Kollektif Zeka online topluluğu yakında açılıyor!
             </h3>
             <p className="text-base text-slate-600 dark:text-slate-400">
-              İlk sen duymak ve topluluğun öncülerinden olmak istiyorsan e-postanı bırak.
+              Topluluğun öncülerinden olmak istiyorsan e-postanı bırak.
             </p>
           </div>
           <form 
@@ -181,7 +181,7 @@ export default function Home() {
         {/* Lightbox */}
         <div 
           id="lightbox" 
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               const lightbox = document.getElementById('lightbox');
