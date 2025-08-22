@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Kollektif Zeka" }],
   creator: "Kollektif Zeka",
   publisher: "Kollektif Zeka",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   formatDetection: {
     email: false,
     address: false,
