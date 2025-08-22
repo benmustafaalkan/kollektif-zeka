@@ -37,11 +37,20 @@ export const metadata: Metadata = {
     siteName: 'Kollektif Zeka',
     locale: 'tr_TR',
     type: 'website',
+    images: [
+      {
+        url: '/kollektif-zeka.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Kollektif Zeka Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Kollektif Zeka - Yapay Zeka Topluluğu",
     description: "Yapay zeka tutkunları, araştırmacılar ve profesyonelleri bir araya getiren etkinlikler.",
+    images: ['/kollektif-zeka.jpeg'],
   },
   robots: {
     index: true,
