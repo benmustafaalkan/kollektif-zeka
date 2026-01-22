@@ -67,19 +67,27 @@ function isLiveNow(): boolean {
 
 const socialLinks: SocialLink[] = [
   {
-    title: "X (Twitter)",
-    description: "X'te bizi takip edin ve güncel paylaşımlarımızı görün.",
-    url: "http://x.com/kollektifzeka",
-    icon: XIcon,
-    hoverColor: "hover:text-gray-400",
-  },
-  {
     title: "Kollektif Zeka Topluluğu",
     description: "Topluluğumuza katıl, yapay zeka ile ilgili en güncel gelişmeleri takip et ve diğer üyelerle bağlantı kur.",
     url: "https://topluluk.kollektifzeka.com",
     icon: Users,
     isSpecial: true,
-    span: "md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-1",
+    span: "md:col-span-3 lg:col-span-3",
+  },
+  {
+    title: "WhatsApp Topluluğu",
+    description: "WhatsApp üzerinden topluluğumuza katılın.",
+    url: "https://wa.me/905XXXXXXXXX",
+    icon: WhatsAppIcon,
+    isSpecial: true,
+    hoverColor: "hover:text-green-500",
+  },
+  {
+    title: "LinkedIn",
+    description: "LinkedIn'de profesyonel ağımıza katılın.",
+    url: "https://www.linkedin.com/groups/15754027/",
+    icon: Linkedin,
+    hoverColor: "hover:text-blue-500",
   },
   {
     title: "Kollektif Zeka Radyo Programı",
@@ -90,7 +98,13 @@ const socialLinks: SocialLink[] = [
     isSpecial: true,
     isLive: true,
     badge: "YAYINDA",
-    span: "md:col-start-3 lg:col-start-3",
+  },
+  {
+    title: "X (Twitter)",
+    description: "X'te bizi takip edin ve güncel paylaşımlarımızı görün.",
+    url: "http://x.com/kollektifzeka",
+    icon: XIcon,
+    hoverColor: "hover:text-gray-400",
   },
   {
     title: "Instagram",
@@ -98,21 +112,6 @@ const socialLinks: SocialLink[] = [
     url: "https://www.instagram.com/kollektifzeka",
     icon: Instagram,
     hoverColor: "hover:text-pink-500",
-  },
-  {
-    title: "LinkedIn",
-    description: "LinkedIn'de profesyonel ağımıza katılın.",
-    url: "https://www.linkedin.com/groups/15754027/",
-    icon: Linkedin,
-    hoverColor: "hover:text-blue-500",
-  },
-  {
-    title: "WhatsApp Topluluğu",
-    description: "WhatsApp üzerinden topluluğumuza katılın.",
-    url: "https://wa.me/905XXXXXXXXX",
-    icon: WhatsAppIcon,
-    isSpecial: true,
-    hoverColor: "hover:text-green-500",
   },
   {
     title: "YouTube",
@@ -269,29 +268,34 @@ export default function HubPage() {
                 rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
                 className={`block ${link.span || ""}`}
               >
-                <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden">
-                  {link.isSpecial && (
+                <Card className={`h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden ${link.span?.includes("col-span-3") ? "py-3" : ""}`}>
+                  {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   )}
                   
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
+                  <CardHeader className={link.span?.includes("col-span-3") ? "pb-2" : ""}>
+                    <div className={`flex items-start justify-between ${link.span?.includes("col-span-3") ? "items-center" : ""}`}>
                       <div className="flex-1">
-                        <CardTitle className="text-slate-100 group-hover:text-white transition-colors mb-2">
+                        <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-lg" : "mb-2"}`}>
                           {link.title}
                         </CardTitle>
-                        <CardDescription className="text-slate-400 group-hover:text-slate-300 transition-colors">
+                        <CardDescription className={`text-slate-400 group-hover:text-slate-300 transition-colors ${link.span?.includes("col-span-3") ? "text-sm line-clamp-1" : ""}`}>
                           {link.description}
                         </CardDescription>
                       </div>
-                      <div className={`ml-4 p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
+                      <div className={`${link.span?.includes("col-span-3") ? "ml-6" : "ml-4"} p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
                         <Icon className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" />
                       </div>
                     </div>
                   </CardHeader>
                   
-                  {link.isSpecial && (
+                  {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                      <span>Keşfet →</span>
+                    </div>
+                  )}
+                  {link.isSpecial && link.span?.includes("col-span-3") && (
+                    <div className="absolute bottom-3 right-6 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>Keşfet →</span>
                     </div>
                   )}
