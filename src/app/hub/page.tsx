@@ -147,9 +147,9 @@ export default function HubPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
         {/* Header */}
-        <header className="text-center mb-8 md:mb-12 space-y-4">
-          <div className="flex justify-center mb-6">
-            <Link href="/" className="cursor-pointer hover:opacity-90 transition-opacity">
+        <header className="text-center mb-6 md:mb-10 space-y-3 md:space-y-4">
+          <div className="flex justify-center mb-4 md:mb-6">
+            <Link href="/" className="cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-lg">
               <Image
                 src="/kollektif-zeka-small.jpeg"
                 alt="Kollektif Zeka"
@@ -161,16 +161,17 @@ export default function HubPage() {
               />
             </Link>
           </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight">
-            Mayası İnsan, Gücü Yapay Zeka
+          <h1 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight px-2">
+            Mayası İnsan,<br className="md:hidden" />
+            <span className="hidden md:inline"> </span>Gücü Yapay Zeka
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 font-light">
+          <p className="text-sm md:text-base text-slate-300 font-light px-2">
             Keşfet - Üret - Bağ Kur
           </p>
         </header>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
           {socialLinks.map((link, index) => {
             const Icon = link.icon;
             const isTRTRadio = link.isLive;
@@ -192,41 +193,42 @@ export default function HubPage() {
                       </div>
                     )}
                     
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between gap-3">
+                    <CardHeader className="pb-3 px-4 md:px-6">
+                      <div className="flex items-center justify-between gap-2 md:gap-3">
                         <div className="flex-1 min-w-0">
-                          <CardTitle className="text-slate-100 text-base mb-1">
+                          <CardTitle className="text-slate-100 text-sm md:text-base mb-1">
                             {link.title}
                           </CardTitle>
                           <CardDescription className="text-slate-400 text-xs">
                             {link.description}
                           </CardDescription>
                         </div>
-                        <div className="flex-shrink-0 p-2 rounded-lg bg-white">
+                        <div className="flex-shrink-0 p-1.5 md:p-2 rounded-lg bg-white">
                           <Image
                             src="/TRT_Radyo_1_logo.svg"
                             alt="TRT Radyo 1"
                             width={60}
                             height={39}
-                            className="w-15 h-auto"
+                            className="w-12 md:w-15 h-auto"
                             priority
+                            sizes="(max-width: 768px) 48px, 60px"
                           />
                         </div>
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="pt-0 pb-3 px-6">
+                    <CardContent className="pt-0 pb-3 px-4 md:px-6">
                       <div className="flex flex-row gap-2">
                         <Link
                           href={link.url}
                           target={link.url.startsWith("http") ? "_blank" : undefined}
                           rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="flex-1"
+                          className="flex-1 min-w-0"
                         >
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white text-sm"
+                            className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white text-xs md:text-sm min-h-[36px]"
                           >
                             Kayıt Dinle
                           </Button>
@@ -236,12 +238,12 @@ export default function HubPage() {
                             href={link.liveUrl || "#"}
                             target={link.liveUrl?.startsWith("http") ? "_blank" : undefined}
                             rel={link.liveUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="flex-1"
+                            className="flex-1 min-w-0"
                           >
                             <Button 
                               variant="default"
                               size="sm"
-                              className="w-full text-sm bg-red-600 hover:bg-red-700 text-white"
+                              className="w-full text-xs md:text-sm bg-red-600 hover:bg-red-700 text-white min-h-[36px]"
                             >
                               🔴 Canlı Dinle
                             </Button>
@@ -251,7 +253,8 @@ export default function HubPage() {
                             variant="outline"
                             size="sm"
                             disabled
-                            className="flex-1 text-sm border-slate-600 bg-slate-700/30 text-slate-500 cursor-not-allowed opacity-50"
+                            className="flex-1 text-xs md:text-sm border-slate-600 bg-slate-700/30 text-slate-500 cursor-not-allowed opacity-50 min-h-[36px]"
+                            aria-label="Canlı yayın şu anda aktif değil"
                           >
                             Canlı Dinle
                           </Button>
@@ -270,29 +273,30 @@ export default function HubPage() {
                 href={link.url}
                 target={link.url.startsWith("http") ? "_blank" : undefined}
                 rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`block ${link.span || ""}`}
+                className={`block ${link.span || ""} focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-xl`}
+                aria-label={`${link.title} - ${link.description}`}
               >
                 <Card className={`h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden ${link.span?.includes("col-span-3") ? "pt-4 pb-2 flex flex-col justify-center" : ""}`}>
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   )}
                   
-                  <CardHeader className={link.span?.includes("col-span-3") ? "pb-2" : ""}>
-                    <div className={`flex ${link.span?.includes("col-span-3") ? "flex-col items-center justify-center text-center" : "items-start justify-between"}`}>
-                      <div className={link.span?.includes("col-span-3") ? "text-center" : "flex-1"}>
-                        <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-lg" : "mb-2"}`}>
+                  <CardHeader className={`${link.span?.includes("col-span-3") ? "pb-2" : ""} px-4 md:px-6`}>
+                    <div className={`flex ${link.span?.includes("col-span-3") ? "flex-col items-center justify-center text-center" : "items-start justify-between gap-2 md:gap-4"}`}>
+                      <div className={link.span?.includes("col-span-3") ? "text-center" : "flex-1 min-w-0"}>
+                        <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-base md:text-lg" : "mb-2 text-sm md:text-base"}`}>
                           {link.title}
                         </CardTitle>
-                        <CardDescription className={`text-slate-400 group-hover:text-slate-300 transition-colors ${link.span?.includes("col-span-3") ? "text-sm line-clamp-1" : ""}`}>
+                        <CardDescription className={`text-slate-400 group-hover:text-slate-300 transition-colors text-xs md:text-sm ${link.span?.includes("col-span-3") ? "line-clamp-1" : ""}`}>
                           {link.description}
                         </CardDescription>
                       </div>
-                      <div className={`${link.span?.includes("col-span-3") ? "mt-4 flex flex-col items-center" : "ml-4"} ${link.span?.includes("col-span-3") ? "" : ""}`}>
-                        <div className={`p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
-                          <Icon className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" />
+                      <div className={`${link.span?.includes("col-span-3") ? "mt-4 flex flex-col items-center" : "ml-2 md:ml-4 flex-shrink-0"} ${link.span?.includes("col-span-3") ? "" : ""}`}>
+                        <div className={`p-2 md:p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
+                          <Icon className="w-5 h-5 md:w-6 md:h-6 text-slate-300 group-hover:text-white transition-colors" />
                         </div>
                         {link.isSpecial && link.span?.includes("col-span-3") && (
-                          <div className="mt-2 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                          <div className="mt-2 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                             <span>Keşfet →</span>
                           </div>
                         )}
@@ -301,12 +305,12 @@ export default function HubPage() {
                   </CardHeader>
                   
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
-                    <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>{link.actionText || "Keşfet"} →</span>
                     </div>
                   )}
                   {!link.isSpecial && link.actionText && (
-                    <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>{link.actionText} →</span>
                     </div>
                   )}
@@ -315,6 +319,27 @@ export default function HubPage() {
             );
           })}
         </div>
+
+        {/* Footer Signature */}
+        <section className="py-8 md:py-12 border-t border-slate-700 mt-12 md:mt-16">
+          <div className="text-center space-y-4">
+            <p className="text-slate-400">
+              Kollektif Zeka, bir{" "}
+              <Link 
+                href="https://yapayzeka.link" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-200 hover:text-slate-100 hover:underline font-medium transition-colors"
+              >
+                yapayzeka.link
+              </Link>
+              {" "}inisiyatifidir.
+            </p>
+            <p className="text-xs text-slate-500">
+              © 2025 Kollektif Zeka. Tüm hakları saklıdır.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );

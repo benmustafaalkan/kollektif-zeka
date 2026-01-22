@@ -20,7 +20,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-8 mb-12 md:mb-16">
           {/* Logo */}
-          <div className="mb-6">
+          <div className="mb-4 md:mb-6">
             <Image
               src="/kollektif-zeka-small.jpeg"
               alt="Kollektif Zeka"
@@ -32,20 +32,20 @@ export default function Home() {
           </div>
 
           {/* Main Motto */}
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-100 tracking-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-100 tracking-tight px-2">
             Mayası İnsan,<br className="md:hidden" />
             <span className="hidden md:inline"> </span>Gücü Yapay Zeka
           </h1>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button asChild size="lg" className="w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center pt-4 w-full max-w-md mx-auto">
+            <Button asChild size="lg" className="w-full sm:w-auto min-h-[44px]">
               <Link href="/hub">Topluluğa Katıl</Link>
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="w-full sm:w-auto border-slate-600 bg-slate-800/50 text-slate-200 hover:bg-slate-700 hover:text-white"
+              className="w-full sm:w-auto border-slate-600 bg-slate-800/50 text-slate-200 hover:bg-slate-700 hover:text-white min-h-[44px]"
               onClick={scrollToFeatures}
             >
               Bizi Tanı
@@ -155,8 +155,9 @@ export default function Home() {
                       frameBorder="0"
                       style={{ border: '1px solid #bfcbda88', borderRadius: '4px' }}
                       allowFullScreen
-                      aria-hidden="false"
-                      tabIndex={0}
+                      aria-label="Luma takvim - Gelecek etkinlikler"
+                      title="Gelecek Etkinlikler Takvimi"
+                      loading="lazy"
                       className="w-full"
                     />
                   </div>
