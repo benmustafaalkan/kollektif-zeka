@@ -285,8 +285,15 @@ export default function HubPage() {
                           {link.description}
                         </CardDescription>
                       </div>
-                      <div className={`${link.span?.includes("col-span-3") ? "mt-4" : "ml-4"} p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
-                        <Icon className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" />
+                      <div className={`${link.span?.includes("col-span-3") ? "mt-4 flex flex-col items-center" : "ml-4"} ${link.span?.includes("col-span-3") ? "" : ""}`}>
+                        <div className={`p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
+                          <Icon className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" />
+                        </div>
+                        {link.isSpecial && link.span?.includes("col-span-3") && (
+                          <div className="mt-2 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                            <span>Keşfet →</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </CardHeader>
@@ -294,11 +301,6 @@ export default function HubPage() {
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>{link.actionText || "Keşfet"} →</span>
-                    </div>
-                  )}
-                  {link.isSpecial && link.span?.includes("col-span-3") && (
-                    <div className="absolute bottom-2 right-6 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
-                      <span>Keşfet →</span>
                     </div>
                   )}
                   {!link.isSpecial && link.actionText && (
