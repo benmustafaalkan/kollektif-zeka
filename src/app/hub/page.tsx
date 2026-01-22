@@ -67,12 +67,37 @@ function isLiveNow(): boolean {
 
 const socialLinks: SocialLink[] = [
   {
+    title: "X (Twitter)",
+    description: "X'te bizi takip edin ve güncel paylaşımlarımızı görün.",
+    url: "http://x.com/kollektifzeka",
+    icon: XIcon,
+    hoverColor: "hover:text-gray-400",
+  },
+  {
     title: "Kollektif Zeka Topluluğu",
     description: "Topluluğumuza katıl, yapay zeka ile ilgili en güncel gelişmeleri takip et ve diğer üyelerle bağlantı kur.",
     url: "https://topluluk.kollektifzeka.com",
     icon: Users,
     isSpecial: true,
-    span: "md:col-span-1",
+    span: "md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-1",
+  },
+  {
+    title: "Kollektif Zeka Radyo Programı",
+    description: "Her Salı 15:00-15:30 arası TRT Radyo 1'de canlı yayın.",
+    url: "https://www.trtdinle.com/show/kolektif-zeka", // Dinleme linki (geçmiş kayıtlar)
+    liveUrl: "https://radyo.trt.net.tr/kanallar/radyo-1", // Canlı yayın linki
+    icon: Radio,
+    isSpecial: true,
+    isLive: true,
+    badge: "YAYINDA",
+    span: "md:col-start-3 lg:col-start-3",
+  },
+  {
+    title: "Instagram",
+    description: "Instagram'da bizi takip edin.",
+    url: "https://www.instagram.com/kollektifzeka",
+    icon: Instagram,
+    hoverColor: "hover:text-pink-500",
   },
   {
     title: "LinkedIn",
@@ -88,30 +113,6 @@ const socialLinks: SocialLink[] = [
     icon: WhatsAppIcon,
     isSpecial: true,
     hoverColor: "hover:text-green-500",
-  },
-  {
-    title: "Kollektif Zeka Radyo Programı",
-    description: "Her Salı 15:00-15:30 arası TRT Radyo 1'de canlı yayın.",
-    url: "https://www.trtdinle.com/show/kolektif-zeka", // Dinleme linki (geçmiş kayıtlar)
-    liveUrl: "https://radyo.trt.net.tr/kanallar/radyo-1", // Canlı yayın linki
-    icon: Radio,
-    isSpecial: true,
-    isLive: true,
-    badge: "YAYINDA",
-  },
-  {
-    title: "X (Twitter)",
-    description: "X'te bizi takip edin ve güncel paylaşımlarımızı görün.",
-    url: "http://x.com/kollektifzeka",
-    icon: XIcon,
-    hoverColor: "hover:text-gray-400",
-  },
-  {
-    title: "Instagram",
-    description: "Instagram'da bizi takip edin.",
-    url: "https://www.instagram.com/kollektifzeka",
-    icon: Instagram,
-    hoverColor: "hover:text-pink-500",
   },
   {
     title: "YouTube",
@@ -166,7 +167,7 @@ export default function HubPage() {
         </header>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
           {socialLinks.map((link, index) => {
             const Icon = link.icon;
             const isTRTRadio = link.isLive;
