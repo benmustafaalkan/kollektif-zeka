@@ -52,14 +52,14 @@ interface SocialLink {
   hoverColor?: string;
 }
 
-// Zaman kontrolü fonksiyonu - TSİ her salı 15.07 - 15.30 arası
+// Zaman kontrolü fonksiyonu - TSİ her salı 15.00 - 15.30 arası
 function isLiveNow(): boolean {
   const now = new Date();
   const day = now.getDay(); // 0 = Pazar, 1 = Pazartesi, 2 = Salı
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const currentTime = hours * 60 + minutes; // Dakika cinsinden
-  const startTime = 15 * 60 + 7; // 15:07 = 907 dakika
+  const startTime = 15 * 60; // 15:00 = 900 dakika
   const endTime = 15 * 60 + 30; // 15:30 = 930 dakika
   
   return day === 2 && currentTime >= startTime && currentTime <= endTime;
@@ -75,17 +75,23 @@ const socialLinks: SocialLink[] = [
     span: "md:col-span-1",
   },
   {
+    title: "LinkedIn",
+    description: "LinkedIn'de profesyonel ağımıza katılın.",
+    url: "https://www.linkedin.com/groups/15754027/",
+    icon: Linkedin,
+    hoverColor: "hover:text-blue-500",
+  },
+  {
     title: "WhatsApp Topluluğu",
     description: "WhatsApp üzerinden topluluğumuza katılın.",
     url: "https://wa.me/905XXXXXXXXX",
     icon: WhatsAppIcon,
     isSpecial: true,
-    span: "md:col-span-1",
     hoverColor: "hover:text-green-500",
   },
   {
     title: "Kollektif Zeka Radyo Programı",
-    description: "Geçmiş yayın kayıtlarını hemen dinle.",
+    description: "Her Salı 15:00-15:30 arası TRT Radyo 1'de canlı yayın.",
     url: "https://www.trtdinle.com/show/kolektif-zeka", // Dinleme linki (geçmiş kayıtlar)
     liveUrl: "https://radyo.trt.net.tr/kanallar/radyo-1", // Canlı yayın linki
     icon: Radio,
@@ -106,13 +112,6 @@ const socialLinks: SocialLink[] = [
     url: "https://www.instagram.com/kollektifzeka",
     icon: Instagram,
     hoverColor: "hover:text-pink-500",
-  },
-  {
-    title: "LinkedIn",
-    description: "LinkedIn'de profesyonel ağımıza katılın.",
-    url: "https://www.linkedin.com/groups/15754027/",
-    icon: Linkedin,
-    hoverColor: "hover:text-blue-500",
   },
   {
     title: "YouTube",
@@ -167,7 +166,7 @@ export default function HubPage() {
         </header>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
           {socialLinks.map((link, index) => {
             const Icon = link.icon;
             const isTRTRadio = link.isLive;
@@ -178,67 +177,82 @@ export default function HubPage() {
                 <div key={index} className={link.span || ""}>
                   <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden">
                     {isLive && (
-                      <div className="absolute top-4 right-4 z-10">
+                      <div className="absolute top-3 right-3 z-10">
                         <Badge 
                           variant="destructive" 
-                          className="flex items-center gap-1.5 animate-pulse"
+                          className="flex items-center gap-1.5 animate-pulse text-xs"
                         >
-                          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
                           {link.badge}
                         </Badge>
                       </div>
                     )}
                     
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <CardTitle className="text-slate-100 group-hover:text-white transition-colors mb-2">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <CardTitle className="text-slate-100 group-hover:text-white transition-colors text-base mb-1">
                             {link.title}
                           </CardTitle>
-                          <CardDescription className="text-slate-400 group-hover:text-slate-300 transition-colors">
+                          <CardDescription className="text-slate-400 group-hover:text-slate-300 transition-colors text-xs">
                             {link.description}
                           </CardDescription>
                         </div>
-                        <div className="ml-4 p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors flex items-center justify-center">
+                        <div className="flex-shrink-0 p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
                           <Image
                             src="/TRT_Radyo_1_logo.svg"
                             alt="TRT Radyo 1"
-                            width={80}
-                            height={52}
-                            className="w-20 h-auto"
+                            width={60}
+                            height={39}
+                            className="w-15 h-auto"
                             priority
                           />
                         </div>
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="flex flex-col gap-2 pb-6">
-                      <Link
-                        href={link.url}
-                        target={link.url.startsWith("http") ? "_blank" : undefined}
-                        rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="w-full"
-                      >
-                        <Button 
-                          variant="outline" 
-                          className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white"
+                    <CardContent className="pt-0 pb-4 px-6">
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          href={link.url}
+                          target={link.url.startsWith("http") ? "_blank" : undefined}
+                          rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="w-full"
                         >
-                          Geçmiş Kayıtları Dinle
-                        </Button>
-                      </Link>
-                      <Link
-                        href={link.liveUrl || "#"}
-                        target={link.liveUrl?.startsWith("http") ? "_blank" : undefined}
-                        rel={link.liveUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="w-full"
-                      >
-                        <Button 
-                          variant={isLive ? "default" : "outline"}
-                          className={`w-full ${isLive ? "bg-red-600 hover:bg-red-700 text-white" : "border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white"}`}
-                        >
-                          {isLive ? "🔴 Canlı Yayını Dinle" : "Yayın Günü (Salı 15:07)"}
-                        </Button>
-                      </Link>
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white text-sm"
+                          >
+                            Kayıt Dinle
+                          </Button>
+                        </Link>
+                        {isLive ? (
+                          <Link
+                            href={link.liveUrl || "#"}
+                            target={link.liveUrl?.startsWith("http") ? "_blank" : undefined}
+                            rel={link.liveUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="w-full"
+                          >
+                            <Button 
+                              variant="default"
+                              size="sm"
+                              className="w-full text-sm bg-red-600 hover:bg-red-700 text-white"
+                            >
+                              🔴 Canlı Dinle
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Button 
+                            variant="outline"
+                            size="sm"
+                            disabled
+                            className="w-full text-sm border-slate-600 bg-slate-700/30 text-slate-500 cursor-not-allowed opacity-50"
+                          >
+                            Canlı Dinle
+                          </Button>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
