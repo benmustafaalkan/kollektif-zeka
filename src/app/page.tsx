@@ -18,7 +18,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-8 mb-20">
+        <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-8 mb-12 md:mb-16">
           {/* Logo */}
           <div className="mb-6">
             <Image
@@ -38,7 +38,7 @@ export default function Home() {
           </h1>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/hub">Topluluğa Katıl</Link>
             </Button>
@@ -54,7 +54,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-12 md:py-20 mb-20">
+        <section id="features" className="mb-12 md:mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* Keşfet */}
             <Card className="text-center border-slate-700 bg-slate-800/50 backdrop-blur-sm">
@@ -104,8 +104,8 @@ export default function Home() {
         </section>
 
         {/* Events Section */}
-        <section className="py-12 md:py-20 mb-20">
-          <div className="space-y-8 md:space-y-12">
+        <section className="mb-12 md:mb-16">
+          <div className="space-y-6 md:space-y-8">
             <div className="text-center space-y-2">
               <h2 className="text-2xl md:text-3xl font-bold text-slate-100">Etkinlikler</h2>
               <p className="text-slate-400 text-base md:text-lg">
@@ -114,6 +114,30 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+              {/* Past Events */}
+              <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Calendar className="w-6 h-6 text-slate-300" />
+                    <CardTitle className="text-slate-100">Neler Yaptık?</CardTitle>
+                  </div>
+                  <CardDescription className="text-slate-400">
+                    Daha önce gerçekleştirdiğimiz 7+ etkinliğin kayıtları ve detayları.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button asChild variant="outline" className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white">
+                    <Link 
+                      href="https://kommunity.com/kollektifzeka/events/past" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Etkinlik Arşivi (Kommunity)
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
               {/* Luma Calendar */}
               <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
                 <CardHeader>
@@ -138,37 +162,13 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-
-              {/* Past Events */}
-              <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Calendar className="w-6 h-6 text-slate-300" />
-                    <CardTitle className="text-slate-100">Neler Yaptık?</CardTitle>
-                  </div>
-                  <CardDescription className="text-slate-400">
-                    Daha önce gerçekleştirdiğimiz 7+ etkinliğin kayıtları ve detayları.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button asChild variant="outline" className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white">
-                    <Link 
-                      href="https://kommunity.com/kollektifzeka/events/past" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Etkinlik Arşivi (Kommunity)
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>
 
         {/* Footer Signature */}
         <section className="py-8 md:py-12 border-t border-slate-700">
-          <div className="text-center">
+          <div className="text-center space-y-4">
             <p className="text-slate-400">
               Kollektif Zeka, bir{" "}
               <Link 
@@ -180,6 +180,9 @@ export default function Home() {
                 yapayzeka.link
               </Link>
               {" "}inisiyatifidir.
+            </p>
+            <p className="text-xs text-slate-500">
+              © 2025 Kollektif Zeka. Tüm hakları saklıdır.
             </p>
           </div>
         </section>
