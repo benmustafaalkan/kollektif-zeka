@@ -50,6 +50,7 @@ interface SocialLink {
   badge?: string;
   span?: string;
   hoverColor?: string;
+  actionText?: string; // Kart altında gösterilecek metin
 }
 
 // Zaman kontrolü fonksiyonu - TSİ her salı 15.00 - 15.30 arası
@@ -81,6 +82,7 @@ const socialLinks: SocialLink[] = [
     icon: WhatsAppIcon,
     isSpecial: true,
     hoverColor: "hover:text-green-500",
+    actionText: "Katıl",
   },
   {
     title: "LinkedIn",
@@ -88,6 +90,7 @@ const socialLinks: SocialLink[] = [
     url: "https://www.linkedin.com/groups/15754027/",
     icon: Linkedin,
     hoverColor: "hover:text-blue-500",
+    actionText: "Katıl",
   },
   {
     title: "Kollektif Zeka Radyo Programı",
@@ -105,6 +108,7 @@ const socialLinks: SocialLink[] = [
     url: "http://x.com/kollektifzeka",
     icon: XIcon,
     hoverColor: "hover:text-gray-400",
+    actionText: "Takip Et",
   },
   {
     title: "Instagram",
@@ -112,6 +116,7 @@ const socialLinks: SocialLink[] = [
     url: "https://www.instagram.com/kollektifzeka",
     icon: Instagram,
     hoverColor: "hover:text-pink-500",
+    actionText: "Takip Et",
   },
   {
     title: "YouTube",
@@ -119,6 +124,7 @@ const socialLinks: SocialLink[] = [
     url: "https://www.youtube.com/@kollektifzeka",
     icon: Youtube,
     hoverColor: "hover:text-red-500",
+    actionText: "Abone Ol",
   },
 ];
 
@@ -211,13 +217,13 @@ export default function HubPage() {
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="pt-0 pb-4 px-6">
-                      <div className="flex flex-col gap-2">
+                    <CardContent className="pt-0 pb-3 px-6">
+                      <div className="flex flex-row gap-2">
                         <Link
                           href={link.url}
                           target={link.url.startsWith("http") ? "_blank" : undefined}
                           rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="w-full"
+                          className="flex-1"
                         >
                           <Button 
                             variant="outline" 
@@ -232,7 +238,7 @@ export default function HubPage() {
                             href={link.liveUrl || "#"}
                             target={link.liveUrl?.startsWith("http") ? "_blank" : undefined}
                             rel={link.liveUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="w-full"
+                            className="flex-1"
                           >
                             <Button 
                               variant="default"
@@ -247,7 +253,7 @@ export default function HubPage() {
                             variant="outline"
                             size="sm"
                             disabled
-                            className="w-full text-sm border-slate-600 bg-slate-700/30 text-slate-500 cursor-not-allowed opacity-50"
+                            className="flex-1 text-sm border-slate-600 bg-slate-700/30 text-slate-500 cursor-not-allowed opacity-50"
                           >
                             Canlı Dinle
                           </Button>
@@ -268,7 +274,7 @@ export default function HubPage() {
                 rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
                 className={`block ${link.span || ""}`}
               >
-                <Card className={`h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden ${link.span?.includes("col-span-3") ? "py-3" : ""}`}>
+                <Card className={`h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden ${link.span?.includes("col-span-3") ? "pt-4 pb-2 flex flex-col justify-center" : ""}`}>
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   )}
@@ -291,12 +297,17 @@ export default function HubPage() {
                   
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
                     <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
-                      <span>Keşfet →</span>
+                      <span>{link.actionText || "Keşfet"} →</span>
                     </div>
                   )}
                   {link.isSpecial && link.span?.includes("col-span-3") && (
-                    <div className="absolute bottom-3 right-6 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <div className="absolute bottom-2 right-6 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>Keşfet →</span>
+                    </div>
+                  )}
+                  {!link.isSpecial && link.actionText && (
+                    <div className="absolute bottom-4 right-4 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                      <span>{link.actionText} →</span>
                     </div>
                   )}
                 </Card>
