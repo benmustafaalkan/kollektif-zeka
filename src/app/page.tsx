@@ -15,12 +15,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-32">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
+        {/* Hero Section */}
+        <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-8 mb-20">
           {/* Logo */}
-          <div className="mb-8">
+          <div className="mb-6">
             <Image
               src="/kollektif-zeka-small.jpeg"
               alt="Kollektif Zeka"
@@ -32,14 +32,10 @@ export default function Home() {
           </div>
 
           {/* Main Motto */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            Mayası İnsan, Gücü Yapay Zeka
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-100 tracking-tight">
+            Mayası İnsan,<br className="md:hidden" />
+            <span className="hidden md:inline"> </span>Gücü Yapay Zeka
           </h1>
-
-          {/* Alt Motto */}
-          <h2 className="text-xl md:text-2xl text-muted-foreground font-light">
-            Keşfet <span className="mx-2">•</span> Üret <span className="mx-2">•</span> Bağ Kur
-          </h2>
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
@@ -49,147 +45,145 @@ export default function Home() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto border-slate-600 bg-slate-800/50 text-slate-200 hover:bg-slate-700 hover:text-white"
               onClick={scrollToFeatures}
             >
               Bizi Tanı
             </Button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Features Section */}
+        <section id="features" className="py-12 md:py-20 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* Keşfet */}
-            <Card className="text-center border-border">
+            <Card className="text-center border-slate-700 bg-slate-800/50 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-primary/10">
-                    <Telescope className="w-8 h-8 text-primary" />
+                  <div className="p-4 rounded-lg bg-slate-700/50">
+                    <Telescope className="w-6 h-6 text-slate-300" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-2">Keşfet</CardTitle>
-                <CardDescription className="text-base">
+                <CardTitle className="text-xl mb-2 text-slate-100">Keşfet</CardTitle>
+                <CardDescription className="text-slate-400">
                   Yeni teknolojileri ve AI araçlarını öğren, en güncel gelişmeleri takip et.
                 </CardDescription>
               </CardHeader>
             </Card>
 
             {/* Üret */}
-            <Card className="text-center border-border">
+            <Card className="text-center border-slate-700 bg-slate-800/50 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-primary/10">
-                    <Pickaxe className="w-8 h-8 text-primary" />
+                  <div className="p-4 rounded-lg bg-slate-700/50">
+                    <Pickaxe className="w-6 h-6 text-slate-300" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-2">Üret</CardTitle>
-                <CardDescription className="text-base">
+                <CardTitle className="text-xl mb-2 text-slate-100">Üret</CardTitle>
+                <CardDescription className="text-slate-400">
                   Hackathonlar ve atölyelerle proje geliştir, kolektif üretimin gücünü deneyimle.
                 </CardDescription>
               </CardHeader>
             </Card>
 
             {/* Bağ Kur */}
-            <Card className="text-center border-border">
+            <Card className="text-center border-slate-700 bg-slate-800/50 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-primary/10">
-                    <UsersIcon className="w-8 h-8 text-primary" />
+                  <div className="p-4 rounded-lg bg-slate-700/50">
+                    <UsersIcon className="w-6 h-6 text-slate-300" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl mb-2">Bağ Kur</CardTitle>
-                <CardDescription className="text-base">
+                <CardTitle className="text-xl mb-2 text-slate-100">Bağ Kur</CardTitle>
+                <CardDescription className="text-slate-400">
                   Benzer vizyona sahip insanlarla tanış, birlikte büyüyen bir topluluk oluştur.
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Events Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl md:text-4xl font-bold">Etkinlikler</h2>
-            <p className="text-muted-foreground text-lg">
-              Gelecek etkinliklerimizi takip edin, geçmiş etkinliklerimizi keşfedin
+        {/* Events Section */}
+        <section className="py-12 md:py-20 mb-20">
+          <div className="space-y-8 md:space-y-12">
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-100">Etkinlikler</h2>
+              <p className="text-slate-400 text-base md:text-lg">
+                Gelecek etkinliklerimizi takip edin, geçmiş etkinliklerimizi keşfedin
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+              {/* Luma Calendar */}
+              <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="text-slate-100">Gelecek Etkinlikler</CardTitle>
+                  <CardDescription className="text-slate-400">
+                    Yaklaşan etkinliklerimizi takvimden görüntüleyin
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="w-full overflow-hidden rounded-lg border-t border-slate-700 bg-slate-800/50">
+                    <iframe
+                      src="https://luma.com/embed/calendar/cal-3GEFaTnXnvjHfMw/events?lt=dark"
+                      width="100%"
+                      height="450"
+                      frameBorder="0"
+                      style={{ border: '1px solid #bfcbda88', borderRadius: '4px' }}
+                      allowFullScreen
+                      aria-hidden="false"
+                      tabIndex={0}
+                      className="w-full"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Past Events */}
+              <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Calendar className="w-6 h-6 text-slate-300" />
+                    <CardTitle className="text-slate-100">Neler Yaptık?</CardTitle>
+                  </div>
+                  <CardDescription className="text-slate-400">
+                    Daha önce gerçekleştirdiğimiz 7+ etkinliğin kayıtları ve detayları.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button asChild variant="outline" className="w-full border-slate-600 bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white">
+                    <Link 
+                      href="https://kommunity.com/kollektifzeka/events/past" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Etkinlik Arşivi (Kommunity)
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer Signature */}
+        <section className="py-8 md:py-12 border-t border-slate-700">
+          <div className="text-center">
+            <p className="text-slate-400">
+              Kollektif Zeka, bir{" "}
+              <Link 
+                href="https://yapayzeka.link" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-200 hover:text-slate-100 hover:underline font-medium transition-colors"
+              >
+                yapayzeka.link
+              </Link>
+              {" "}inisiyatifidir.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Luma Calendar */}
-            <Card className="border-border overflow-hidden">
-              <CardHeader>
-                <CardTitle>Gelecek Etkinlikler</CardTitle>
-                <CardDescription>
-                  Yaklaşan etkinliklerimizi takvimden görüntüleyin
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="w-full overflow-hidden rounded-lg border-t border-border bg-card">
-                  <iframe
-                    src="https://luma.com/embed/calendar/cal-3GEFaTnXnvjHfMw/events?lt=dark"
-                    width="100%"
-                    height="450"
-                    frameBorder="0"
-                    style={{ border: '1px solid #bfcbda88', borderRadius: '4px' }}
-                    allowFullScreen
-                    aria-hidden="false"
-                    tabIndex={0}
-                    className="w-full"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Past Events */}
-            <Card className="border-border">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <Calendar className="w-6 h-6 text-primary" />
-                  <CardTitle>Neler Yaptık?</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Daha önce gerçekleştirdiğimiz 7+ etkinliğin kayıtları ve detayları.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild variant="outline" className="w-full">
-                  <Link 
-                    href="https://kommunity.com/kollektifzeka/events/past" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Etkinlik Arşivi (Kommunity)
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Signature */}
-      <section className="py-12 px-4 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            Kollektif Zeka, bir{" "}
-            <Link 
-              href="https://yapayzeka.link" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline font-medium"
-            >
-              yapayzeka.link
-            </Link>
-            {" "}inisiyatifidir.
-          </p>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
