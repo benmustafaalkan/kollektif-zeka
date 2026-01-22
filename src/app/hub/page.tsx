@@ -150,17 +150,13 @@ export default function HubPage() {
         <header className="text-center mb-8 md:mb-12 space-y-4">
           <div className="flex justify-center mb-6">
             <Image
-              src="/kollektif-zeka.jpeg"
+              src="/kollektif-zeka-small.jpeg"
               alt="Kollektif Zeka"
               width={200}
               height={150}
               className="max-w-full h-auto drop-shadow-lg rounded-lg"
               priority
               loading="eager"
-              quality={85}
-              sizes="(max-width: 768px) 200px, 200px"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
           </div>
           <h1 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight">
@@ -181,7 +177,7 @@ export default function HubPage() {
             if (isTRTRadio) {
               return (
                 <div key={index} className={link.span || ""}>
-                  <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-md border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 group relative overflow-hidden">
+                  <Card className="h-full border-slate-700 bg-slate-800/50 backdrop-blur-sm group relative overflow-hidden">
                     {isLive && (
                       <div className="absolute top-3 right-3 z-10">
                         <Badge 
@@ -197,14 +193,14 @@ export default function HubPage() {
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <CardTitle className="text-slate-100 group-hover:text-white transition-colors text-base mb-1">
+                          <CardTitle className="text-slate-100 text-base mb-1">
                             {link.title}
                           </CardTitle>
-                          <CardDescription className="text-slate-400 group-hover:text-slate-300 transition-colors text-xs">
+                          <CardDescription className="text-slate-400 text-xs">
                             {link.description}
                           </CardDescription>
                         </div>
-                        <div className="flex-shrink-0 p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
+                        <div className="flex-shrink-0 p-2 rounded-lg bg-white">
                           <Image
                             src="/TRT_Radyo_1_logo.svg"
                             alt="TRT Radyo 1"
@@ -280,8 +276,8 @@ export default function HubPage() {
                   )}
                   
                   <CardHeader className={link.span?.includes("col-span-3") ? "pb-2" : ""}>
-                    <div className={`flex items-start justify-between ${link.span?.includes("col-span-3") ? "items-center" : ""}`}>
-                      <div className="flex-1">
+                    <div className={`flex ${link.span?.includes("col-span-3") ? "flex-col items-center justify-center text-center" : "items-start justify-between"}`}>
+                      <div className={link.span?.includes("col-span-3") ? "text-center" : "flex-1"}>
                         <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-lg" : "mb-2"}`}>
                           {link.title}
                         </CardTitle>
@@ -289,7 +285,7 @@ export default function HubPage() {
                           {link.description}
                         </CardDescription>
                       </div>
-                      <div className={`${link.span?.includes("col-span-3") ? "ml-6" : "ml-4"} p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
+                      <div className={`${link.span?.includes("col-span-3") ? "mt-4" : "ml-4"} p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
                         <Icon className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" />
                       </div>
                     </div>
