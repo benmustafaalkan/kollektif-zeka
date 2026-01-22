@@ -18,7 +18,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-8 mb-12 md:mb-16">
+        <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center space-y-6 md:space-y-8 mb-8 md:mb-12">
           {/* Logo */}
           <div className="mb-4 md:mb-6">
             <Image
@@ -38,7 +38,7 @@ export default function Home() {
           </h1>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center pt-4 w-full max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center pt-2 md:pt-4 w-full max-w-md mx-auto">
             <Button asChild size="lg" className="w-full sm:w-auto min-h-[44px]">
               <Link href="/hub">Topluluğa Katıl</Link>
             </Button>
@@ -54,7 +54,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="mb-12 md:mb-16">
+        <section id="features" className="mb-8 md:mb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* Keşfet */}
             <Card className="text-center border-slate-700 bg-slate-800/50 backdrop-blur-sm">
