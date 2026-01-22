@@ -145,10 +145,10 @@ export default function HubPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
+      <div className="container mx-auto px-4 py-6 md:py-8 max-w-7xl">
         {/* Header */}
-        <header className="text-center mb-6 md:mb-10 space-y-3 md:space-y-4">
-          <div className="flex justify-center mb-4 md:mb-6">
+        <header className="text-center mb-4 md:mb-6 space-y-2 md:space-y-3">
+          <div className="flex justify-center mb-3 md:mb-4">
             <Link href="/" className="cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-lg">
               <Image
                 src="/kollektif-zeka-small.jpeg"
@@ -171,7 +171,7 @@ export default function HubPage() {
         </header>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 auto-rows-fr">
           {socialLinks.map((link, index) => {
             const Icon = link.icon;
             const isTRTRadio = link.isLive;
@@ -193,17 +193,17 @@ export default function HubPage() {
                       </div>
                     )}
                     
-                    <CardHeader className="pb-3 px-4 md:px-6">
-                      <div className="flex items-center justify-between gap-2 md:gap-3">
+                    <CardHeader className="pb-2 px-3 md:px-4">
+                      <div className="flex items-center justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <CardTitle className="text-slate-100 text-sm md:text-base mb-1">
+                          <CardTitle className="text-slate-100 text-sm md:text-base mb-0.5">
                             {link.title}
                           </CardTitle>
                           <CardDescription className="text-slate-400 text-xs">
                             {link.description}
                           </CardDescription>
                         </div>
-                        <div className="flex-shrink-0 p-1.5 md:p-2 rounded-lg bg-white">
+                        <div className="flex-shrink-0 p-1.5 rounded-lg bg-white">
                           <Image
                             src="/TRT_Radyo_1_logo.svg"
                             alt="TRT Radyo 1"
@@ -217,7 +217,7 @@ export default function HubPage() {
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="pt-0 pb-3 px-4 md:px-6">
+                    <CardContent className="pt-0 pb-2.5 px-3 md:px-4">
                       <div className="flex flex-row gap-2">
                         <Link
                           href={link.url}
@@ -281,22 +281,22 @@ export default function HubPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   )}
                   
-                  <CardHeader className={`${link.span?.includes("col-span-3") ? "pb-2" : ""} px-4 md:px-6`}>
-                    <div className={`flex ${link.span?.includes("col-span-3") ? "flex-col items-center justify-center text-center" : "items-start justify-between gap-2 md:gap-4"}`}>
+                  <CardHeader className={`${link.span?.includes("col-span-3") ? "pb-2" : ""} px-3 md:px-4`}>
+                    <div className={`flex ${link.span?.includes("col-span-3") ? "flex-col items-center justify-center text-center" : "items-start justify-between gap-2"}`}>
                       <div className={link.span?.includes("col-span-3") ? "text-center" : "flex-1 min-w-0"}>
-                        <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-base md:text-lg" : "mb-2 text-sm md:text-base"}`}>
+                        <CardTitle className={`text-slate-100 group-hover:text-white transition-colors ${link.span?.includes("col-span-3") ? "mb-1 text-base md:text-lg" : "mb-1.5 text-sm md:text-base"}`}>
                           {link.title}
                         </CardTitle>
                         <CardDescription className={`text-slate-400 group-hover:text-slate-300 transition-colors text-xs md:text-sm ${link.span?.includes("col-span-3") ? "line-clamp-1" : ""}`}>
                           {link.description}
                         </CardDescription>
                       </div>
-                      <div className={`${link.span?.includes("col-span-3") ? "mt-4 flex flex-col items-center" : "ml-2 md:ml-4 flex-shrink-0"} ${link.span?.includes("col-span-3") ? "" : ""}`}>
-                        <div className={`p-2 md:p-3 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
+                      <div className={`${link.span?.includes("col-span-3") ? "mt-3 flex flex-col items-center" : "ml-2 flex-shrink-0"} ${link.span?.includes("col-span-3") ? "" : ""}`}>
+                        <div className={`p-2 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors ${link.hoverColor || ""}`}>
                           <Icon className="w-5 h-5 md:w-6 md:h-6 text-slate-300 group-hover:text-white transition-colors" />
                         </div>
                         {link.isSpecial && link.span?.includes("col-span-3") && (
-                          <div className="mt-2 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                          <div className="mt-1.5 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
                             <span>Keşfet →</span>
                           </div>
                         )}
@@ -305,12 +305,12 @@ export default function HubPage() {
                   </CardHeader>
                   
                   {link.isSpecial && !link.span?.includes("col-span-3") && (
-                    <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>{link.actionText || "Keşfet"} →</span>
                     </div>
                   )}
                   {!link.isSpecial && link.actionText && (
-                    <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
                       <span>{link.actionText} →</span>
                     </div>
                   )}
@@ -321,8 +321,8 @@ export default function HubPage() {
         </div>
 
         {/* Footer Signature */}
-        <section className="py-8 md:py-12 border-t border-slate-700 mt-12 md:mt-16">
-          <div className="text-center space-y-4">
+        <section className="py-6 md:py-8 border-t border-slate-700 mt-6 md:mt-8">
+          <div className="text-center space-y-2 md:space-y-3">
             <p className="text-slate-400">
               Kollektif Zeka, bir{" "}
               <Link 
