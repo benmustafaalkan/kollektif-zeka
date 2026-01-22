@@ -149,15 +149,17 @@ export default function HubPage() {
         {/* Header */}
         <header className="text-center mb-8 md:mb-12 space-y-4">
           <div className="flex justify-center mb-6">
-            <Image
-              src="/kollektif-zeka-small.jpeg"
-              alt="Kollektif Zeka"
-              width={200}
-              height={150}
-              className="max-w-full h-auto drop-shadow-lg rounded-lg"
-              priority
-              loading="eager"
-            />
+            <Link href="/" className="cursor-pointer hover:opacity-90 transition-opacity">
+              <Image
+                src="/kollektif-zeka-small.jpeg"
+                alt="Kollektif Zeka"
+                width={200}
+                height={150}
+                className="max-w-full h-auto drop-shadow-lg rounded-lg"
+                priority
+                loading="eager"
+              />
+            </Link>
           </div>
           <h1 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight">
             Mayası İnsan, Gücü Yapay Zeka
