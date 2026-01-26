@@ -78,7 +78,7 @@ const socialLinks: SocialLink[] = [
   {
     title: "WhatsApp Topluluğu",
     description: "WhatsApp üzerinden topluluğumuza katılın.",
-    url: "https://wa.me/905XXXXXXXXX",
+    url: "https://chat.whatsapp.com/FwcbKJL6og86fPgea4dSgQ",
     icon: WhatsAppIcon,
     isSpecial: true,
     hoverColor: "hover:text-green-500",
